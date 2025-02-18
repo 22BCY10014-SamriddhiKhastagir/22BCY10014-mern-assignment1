@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form with Validation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .error-message {
+            color: red;
+            font-size: small;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Form</h1>
+        <form id="myForm">
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name">
+                <div id="firstNameError" class="error-message"></div>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name">
+                <div id="lastNameError" class="error-message"></div>
+            </div>
+            <div class="form-group">
+                <label for="email">E-Mail</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="E-Mail Address">
+                <div id="emailError" class="error-message"></div>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone #</label>
+                <input type="tel" class="form-control" id="phone" name="phone" placeholder="(845)555-1212">
+                <div id="phoneError" class="error-message"></div>
+            </div>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" class="form-control" id="address" name="address" placeholder="Address">
+                <div id="addressError" class="error-message"></div>
+            </div>
+            <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" class="form-control" id="city" name="city" placeholder="city">
+                <div id="cityError" class="error-message"></div>
+            </div>
+            <div class="form-group">
+                <label for="state">State</label>
+                <select class="form-control" id="state" name="state">
+                    <option value="">Please select your state</option>
+                    <option value="AL">Alabama</option>
+                    <option value="AK">Alaska</option>
+                    </select>
+                <div id="stateError" class="error-message"></div>
+            </div>
+            <div class="form-group">
+                <label for="hosting">Do you have hosting?</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="hosting" id="hostingYes" value="yes">
+                    <label class="form-check-label" for="hostingYes">
+                        Yes
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="hosting" id="hostingNo" value="no">
+                    <label class="form-check-label" for="hostingNo">
+                        No
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="description">Project Description</label>
+                <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="validateForm()">Send</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function validateForm() {
+            // Reset error messages
+            const errorMessages = document.querySelectorAll('.error-message');
+            errorMessages.forEach(msg => msg.textContent = '');
+
+            let isValid = true;
+
+            // Validation checks
+            if (document.getElementById('firstName').value.trim() === '') {
+                document.getElementById('firstNameError').textContent = 'Please supply your first name';
+                isValid = false;
+            }
+            if (document.getElementById('lastName').value.trim() === '') {
+                document.getElementById('lastNameError').textContent = 'Please supply your last name';
+                isValid = false;
+            }
+            if (document.getElementById('email').value.trim() === '') {
+                document.getElementById('emailError').textContent = 'Please supply your email address';
+                isValid = false;
+            }
+            if (document.getElementById('phone').value.trim() === '') {
+                document.getElementById('phoneError').textContent = 'Please supply your phone number';
+                isValid = false;
+            }
+            if (document.getElementById('address').value.trim() === '') {
+                document.getElementById('addressError').textContent = 'Please supply your street address';
+                isValid = false;
+            }
+            if (document.getElementById('city').value.trim() === '') {
+                document.getElementById('cityError').textContent = 'Please supply your city';
+                isValid = false;
+            }
+            if (document.getElementById('state').value === '') {
+                document.getElementById('stateError').textContent = 'Please select your state';
+                isValid = false;
+            }
+
+            if (isValid) {
+                // Form is valid, you can submit it here
+                alert('Form submitted successfully!');
+                document.getElementById('myForm').submit(); // Uncomment to actually submit the form
+            }
+        }
+    </script>
+
+</body>
+
+</html>

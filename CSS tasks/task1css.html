@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table and Shapes</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: lightblue;
+        }
+        th, td {
+            border: 2px solid black;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            font-weight: bold;
+        }
+        .shapes-container {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .shape {
+            width: 100px;
+            height: 60px;
+            border: 2px solid green;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .rounded {
+            border-radius: 10px;
+        }
+        .oval {
+            width: 100px;
+            height: 60px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Age</th>
+        </tr>
+        <tr>
+            <td>Jill</td>
+            <td>Smith</td>
+            <td>50</td>
+        </tr>
+        <tr>
+            <td>Eve</td>
+            <td>Jackson</td>
+            <td>94</td>
+        </tr>
+        <tr>
+            <td>John</td>
+            <td>Doe</td>
+            <td>80</td>
+        </tr>
+    </table>
+    <div class="shapes-container">
+        <div class="shape"></div>
+        <div class="shape rounded"></div>
+        <div class="shape rounded"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape rounded"></div>
+        <div class="shape oval"></div>
+        <div class="shape"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hoverable Sidenav Buttons</title>
+<style>
+body {
+  font-family: sans-serif;
+  margin: 0;
+}
+
+.sidenav {
+  height: 100%;
+  width: 160px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #f1f1f1;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.sidenav a {
+  padding: 10px 15px;
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  background-color: #ddd;
+}
+
+.sidenav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.sidenav a:nth-child(1) {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.sidenav a:nth-child(2) {
+  background-color: #2196F3;
+  color: white;
+}
+
+.sidenav a:nth-child(3) {
+  background-color: #f44336;
+  color: white;
+}
+
+.sidenav a:nth-child(4) {
+  background-color: #9E9E9E;
+  color: white;
+}
+
+.main {
+  margin-left: 200px;
+  padding: 20px;
+}
+
+@media screen and (max-width: 700px) {
+  .sidenav {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidenav a {
+    float: left;
+  }
+  div.main {
+    margin-left: false;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="sidenav">
+  <a href="#">Button 1</a>
+  <a href="#">Button 2</a>
+  <a href="#">Button 3</a>
+  <a href="#">Button 4</a>
+</div>
+
+<div class="main">
+  <h2>Hoverable Sidenav Buttons</h2>
+  <p>Hover over the buttons in the left side navigation to open them.</p>
+</div>
+
+</body>
+</html>

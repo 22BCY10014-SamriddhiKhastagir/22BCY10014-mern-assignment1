@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Show Date and Time</title>
+<style>
+  body {
+    font-family: sans-serif;
+  }
+  #dateBtn, #timeBtn {
+    padding: 10px 20px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<button id="dateBtn">show date</button>
+<div id="dateDiv"></div>
+
+<button id="timeBtn">show Time</button>
+<div id="timeDiv"></div>
+
+<script>
+  const dateBtn = document.getElementById('dateBtn');
+  const timeBtn = document.getElementById('timeBtn');
+  const dateDiv = document.getElementById('dateDiv');
+  const timeDiv = document.getElementById('timeDiv');
+
+  dateBtn.addEventListener('click', () => {
+    const today = new Date();
+    const date = today.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }); 
+    dateDiv.textContent = date;
+  });
+
+  timeBtn.addEventListener('click', () => {
+    const now = new Date();
+    const time = now.toString(); 
+    timeDiv.textContent = time;
+  });
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Instagram Login</title>
+<style>
+body {
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #fafafa; 
+}
+
+.login-container {
+  background-color: white;
+  border: 1px solid #dbdbdb; 
+  border-radius: 3px;
+  padding: 40px;
+  width: 350px;
+}
+
+.instagram-logo {
+  font-family: 'Lobster Two', cursive; 
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  color: #8e8e8e; 
+  font-size: 0.8rem;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: calc(100% - 10px);
+  padding: 10px;
+  border: 1px solid #dbdbdb;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #0095f6; 
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  color: #8e8e8e;
+  font-size: 0.9rem;
+}
+
+.signup-link {
+  text-align: center;
+  margin-top: 20px;
+  color: #8e8e8e;
+  font-size: 0.9rem;
+}
+
+.signup-link a {
+  color: #0095f6; 
+  font-weight: bold;
+}
+</style>
+</head>
+<body>
+
+<div class="login-container">
+  <h1 class="instagram-logo">Instagram</h1>
+
+  <div class="input-group">
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username">
+  </div>
+
+  <div class="input-group">
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password">
+  </div>
+
+  <button>Log in</button>
+
+  <div class="options">
+    <div>
+      <input type="checkbox" id="remember" name="remember">
+      <label for="remember">Remember me</label>
+    </div>
+    <a href="#">Forgot Password?</a>
+  </div>
+
+  <div class="signup-link">
+    Don't have an account! <a href="#">Sign up here.</a>
+  </div>
+</div>
+
+</body>
+</html>

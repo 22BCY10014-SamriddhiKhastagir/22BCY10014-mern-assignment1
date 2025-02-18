@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplication & Division</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Multiplication & Division</h2>
+    <form onsubmit="calculate(event)">
+        <label for="num1">Enter First Number:</label>
+        <input type="number" id="num1" required>
+        <br>
+        <label for="num2">Enter Second Number:</label>
+        <input type="number" id="num2" required>
+        <br>
+        <button type="submit">Calculate</button>
+    </form>
+    <h3>Multiplication Result: <span id="multiplication"></span></h3>
+    <h3>Division Result: <span id="division"></span></h3>
+
+    <script>
+        function calculate(event) {
+            event.preventDefault();
+            let num1 = parseFloat(document.getElementById('num1').value);
+            let num2 = parseFloat(document.getElementById('num2').value);
+            
+            let multiplication = num1 * num2;
+            let division = num2 !== 0 ? (num1 / num2).toFixed(2) : 'Undefined';
+            
+            document.getElementById('multiplication').innerText = multiplication;
+            document.getElementById('division').innerText = division;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Train Animation</title>
+<style>
+  body {
+    font-family: sans-serif;
+  }
+  #train-container {
+    width: 400px; /* Adjust as needed */
+    height: 200px; /* Adjust as needed */
+    position: relative;
+    overflow: hidden; /* Hide train when it goes off-screen */
+  }
+  #train {
+    position: absolute;
+    left: -200px; /* Start off-screen to the left */
+    bottom: 0;
+    width: 200px; /* Adjust train width */
+    transition: left 2s linear; /* Animate 'left' property */
+  }
+  #buttons {
+    margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+
+<div id="train-container">
+  <img id="train" src="https://cdn.pixabay.com/animation/2023/01/20/04/27/04-27-57-299_512.gif" alt="Train">
+</div>
+
+<div id="buttons">
+  <button id="startBtn">Start</button>
+  <button id="stopBtn">Stop</button>
+</div>
+
+<script>
+  const train = document.getElementById('train');
+  const startBtn = document.getElementById('startBtn');
+  const stopBtn = document.getElementById('stopBtn');
+  let animationRunning = false;
+
+  startBtn.addEventListener('click', () => {
+    if (!animationRunning) {
+      train.style.left = 'calc(100% + 200px)'; /* Move to the right */
+      animationRunning = true;
+    }
+  });
+
+  stopBtn.addEventListener('click', () => {
+    train.style.left = '-200px'; /* Move back to the left */
+    animationRunning = false;
+  });
+
+  train.addEventListener('transitionend', () => {
+    if (animationRunning) {
+      train.style.left = '-200px'; /* Reset position for the next run */
+      animationRunning = false;
+    }
+  });
+
+</script>
+
+</body>
+</html>

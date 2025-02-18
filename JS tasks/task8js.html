@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Registration Form</title>
+<style>
+body {
+    font-family: sans-serif;
+}
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+textarea,
+select {
+    width: 300px;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+}
+.error {
+    color: red;
+    font-size: small;
+    display: none; /* Initially hide error messages */
+}
+.poor {
+    color: red;
+    font-size: small;
+}
+form {
+    border: 1px solid red;
+    padding: 20px;
+}
+</style>
+</head>
+<body>
+
+<form id="myForm">
+    <label for="firstName">First Name</label>
+    <input type="text" id="firstName" name="firstName">
+    <span id="firstNameError" class="error">First Name is required</span>
+    <span id="firstNamePoor" class="poor">POOR</span><br>
+
+    <label for="lastName">Last Name</label>
+    <input type="text" id="lastName" name="lastName">
+    <span id="lastNameError" class="error">Last Name is required</span>
+    <span id="lastNamePoor" class="poor">POOR</span><br>
+
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email">
+    <span id="emailError" class="error">Valid Email is required</span>
+    <span id="emailPoor" class="poor">POOR</span><br>
+
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password">
+    <span id="passwordError" class="error">Password is required</span>
+    <span id="passwordPoor" class="poor">POOR</span><br>
+
+    <label for="rePassword">Re-enter Password</label>
+    <input type="password" id="rePassword" name="rePassword">
+    <span id="rePasswordError" class="error">Password Mismatch</span>
+    <span id="rePasswordPoor" class="poor">POOR OR MISMATCH</span><br>
+
+    <label for="gender">Gender</label>
+    <select id="gender" name="gender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+    </select><br>
+
+    <label for="age">Age</label>
+    <input type="number" id="age" name="age">
+    <span id="ageError" class="error">Age is required</span>
+    <span id="agePoor" class="poor">POOR</span><br>
+
+    <label for="phone">Phone Number</label>
+    <input type="text" id="phone" name="phone">
+    <span id="phoneError" class="error">Phone Number is required</span>
+    <span id="phonePoor" class="poor">POOR</span><br>
+
+    <label for="address">Address</label>
+    <textarea id="address" name="address"></textarea>
+    <span id="addressError" class="error">Address is required</span>
+    <span id="addressPoor" class="poor">POOR</span><br>
+
+    <label for="state">State</label>
+    <input type="text" id="state" name="state">
+    <span id="stateError" class="error">State is required</span>
+    <span id="statePoor" class="poor">POOR</span><br>
+
+    <label for="country">Country</label>
+    <select id="country" name="country">
+        <option value="default">Choose your country</option>
+        </select><br>
+
+    <label for="languages">Languages known</label>
+    <input type="checkbox" id="english" name="english">
+    <label for="english">English</label>
+    <input type="checkbox" id="kannada" name="kannada">
+    <label for="kannada">Kannada</label>
+    <input type="checkbox" id="hindi" name="hindi">
+    <label for="hindi">Hindi</label>
+    <input type="checkbox" id="telugu" name="telugu">
+    <label for="telugu">Telugu</label><br>
+
+    <input type="checkbox" id="declaration" name="declaration">
+    <label for="declaration">Hereby I declare all the given details are true</label><br>
+
+    <button type="button" onclick="validateForm()">REGISTER</button>
+</form>
+
+<script>
+function validateForm() {
+    let isValid = true;
+
+    // Reset all error and "poor" messages
+    const errorMessages = document.querySelectorAll('.error');
+    errorMessages.forEach(msg => msg.style.display = 'none');
+    const poorMessages = document.querySelectorAll('.poor');
+    poorMessages.forEach(msg => msg.style.display = 'none');
+
+    // Validation checks
+    const requiredFields = {
+        firstName: 'First Name',
+        lastName: 'Last Name',
+        email: 'Email',
+        password: 'Password',
+        age: 'Age',
+        phone: 'Phone Number',
+        address: 'Address',
+        state: 'State'
+    };
+
+    for (const field in requiredFields) {
+        const input = document.getElementById(field);
+        const errorSpan = document.getElementById(field + 'Error');
+        const poorSpan = document.getElementById(field + 'Poor');
+
+        if (input.value.trim() === '') {
+            errorSpan.style.display = 'inline';
+            poorSpan.style.display = 'inline';
+            isValid = false;
+        }
+    }
+
+    // Email validation
+    const emailInput = document.getElementById('email');
+    const emailErrorSpan = document.getElementById('emailError');
+    if (emailInput.value.trim() !== '' && !isValidEmail(emailInput.value)) {
+        emailErrorSpan.style.display = 'inline';
+        isValid = false;
+    }
+
+    // Password match validation
+    const passwordInput = document.getElementById('password');
+    const rePasswordInput = document.getElementById('rePassword');
+    const rePasswordErrorSpan = document.getElementById('rePasswordError');
+    if (rePasswordInput.value.trim() !== passwordInput.value) {
+        rePasswordErrorSpan.style.display = 'inline';
+        isValid = false;
+    }
+
+    if (isValid) {
+        alert('Form submitted successfully!');
+        // document.getElementById('myForm').submit(); // Uncomment to actually submit the form
+    }
+}
+
+function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+</script>
+
+</body>
+</html>

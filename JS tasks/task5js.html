@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Form with Validation</title>
+<style>
+  body {
+    font-family: sans-serif;
+  }
+  label {
+    display: block; 
+    margin-bottom: 5px;
+  }
+  input[type="text"],
+  input[type="email"],
+  input[type="url"],
+  textarea {
+    width: 300px;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+  }
+  .error {
+    color: red;
+    font-size: small;
+  }
+  form {
+    border: 1px solid red;
+    padding: 20px;
+  }
+</style>
+</head>
+<body>
+
+<form id="myForm">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name">
+  <div id="nameError" class="error"></div>
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email">
+  <div id="emailError" class="error"></div>
+
+  <label for="website">Website:</label>
+  <input type="url" id="website" name="website">
+  <div id="websiteError" class="error"></div>
+
+  <label for="message">Message:</label>
+  <textarea id="message" name="message"></textarea>
+  <div id="messageError" class="error"></div>
+
+  <button type="button" onclick="validateForm()">Submit</button>
+</form>
+
+<script>
+function validateForm() {
+  document.getElementById('nameError').textContent = '';
+  document.getElementById('emailError').textContent = '';
+  document.getElementById('websiteError').textContent = '';
+  document.getElementById('messageError').textContent = '';
+
+  let isValid = true;
+
+  if (document.getElementById('name').value.trim() === '') {
+    document.getElementById('nameError').textContent = 'This field is required';
+    isValid = false;
+  }
+
+  const emailInput = document.getElementById('email');
+  if (emailInput.value.trim() === '') {
+    document.getElementById('emailError').textContent = 'A valid email address is required';
+    isValid = false;
+  } else if (!isValidEmail(emailInput.value)) {
+    document.getElementById('emailError').textContent = 'A valid email address is required';
+    isValid = false;
+  }
+
+  const websiteInput = document.getElementById('website');
+  if (websiteInput.value.trim() !== '' && !isValidUrl(websiteInput.value)) {
+    document.getElementById('websiteError').textContent = 'A valid url is required';
+    isValid = false;
+  }
+
+  if (document.getElementById('message').value.trim() === '') {
+    document.getElementById('messageError').textContent = 'This field is required';
+    isValid = false;
+  }
+
+  if (isValid) {
+    // Form is valid, you can submit it here
+    alert('Form submitted successfully!');
+    // document.getElementById('myForm').submit(); 
+  }
+}
+
+function isValidEmail(email) {
+  // Basic email validation regex
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
+
+function isValidUrl(url) {
+  // Basic URL validation regex
+  const urlRegex = /^(ftp|http|https):\/\/[^ "]+$/;
+  return urlRegex.test(url);
+}
+</script>
+
+</body>
+</html>
